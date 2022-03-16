@@ -3,7 +3,7 @@
 
 add extension:
 mvn quarkus:add-extension -Dextensions="jdbc-postgres, quarkus-hibernate-orm-panache, resteasy-jsonb, smallrye-openapi, quarkus-smallrye-openapi, hibernate-validator"
-
+mvn quarkus:add-extension -Dextensions="jwt"
 Commands:
 
 docker-compose up
