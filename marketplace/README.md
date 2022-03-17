@@ -1,3 +1,10 @@
+
+
+
+mvn quarkus:add-extension -Dextensions="resteasy-mutiny, jdbc-postgres, flyway, pg-client"
+
+
+
 # marketplace Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
