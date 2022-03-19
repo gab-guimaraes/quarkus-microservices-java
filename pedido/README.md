@@ -1,3 +1,6 @@
+mvn quarkus:add-extension -Dextensions="smallrye-openapi, resteasy-jsonb, mongodb-panache"
+
+
 # code-with-quarkus Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.

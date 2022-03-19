@@ -5,9 +5,13 @@ import org.acme.dto.RestauranteMapper;
 import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
 import org.eclipse.microprofile.openapi.annotations.security.*;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -19,13 +23,17 @@ import java.util.Optional;
 @Path("/restaurantes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@RolesAllowed("proprietario")
-@SecurityScheme(securitySchemeName = "ifood-oauth", type = SecuritySchemeType.OAUTH2, flows =
-@OAuthFlows(password = @OAuthFlow(tokenUrl = "http://localhost:8180/auth/realms/ifood/protocol/openid-connect/token")))
+//@RolesAllowed("proprietario")
+//@SecurityScheme(securitySchemeName = "ifood-oauth", type = SecuritySchemeType.OAUTH2, flows =
+//@OAuthFlows(password = @OAuthFlow(tokenUrl = "http://localhost:8180/auth/realms/ifood/protocol/openid-connect/token")))
 public class RestaurantResource {
 
     @Inject
     RestauranteMapper restauranteMapper;
+
+    @Inject
+    @Channel("restaurantes")
+    Emitter<String> emitter;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +48,9 @@ public class RestaurantResource {
     public Response adicionar(@Valid AdicionarRestauranteDTO dto) {
         Restaurante restaurante = restauranteMapper.toRestaurante(dto);
         Restaurante.persist(restaurante);
+        Jsonb create = JsonbBuilder.create();
+        String json = create.toJson(restaurante);
+        emitter.send(json);
         return Response.status(Response.Status.CREATED).build();
     }
 

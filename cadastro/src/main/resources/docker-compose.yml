@@ -8,14 +8,6 @@ services:
       POSTGRES_PASSWORD: cadastro
     ports:
       - "5432:5432"
-  postgres_marketplace:
-    container_name: postgres_marketplace
-    image: postgres:12.2
-    environment:
-      POSTGRES_USER: marketplace
-      POSTGRES_PASSWORD: marketplace
-    ports:
-      - "5433:5432"
   keycloak_ifood:
     container_name: keycloak_ifood
     image: jboss/keycloak:9.0.2
@@ -31,5 +23,14 @@ services:
         ARTEMIS_USERNAME: user-amq
         ARTEMIS_PASSWORD: password-amq
     ports:
-        - 8161:8161
-        - 61616:61616
+        - "8161:8161"
+        - "61616:61616"
+  mongodb_ifood:
+    image: mongo
+    container_name: mongo_ifood
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: username
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: pedido
+    ports:
+      - "27017:27017"
