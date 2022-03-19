@@ -2,7 +2,8 @@
 
 
 mvn quarkus:add-extension -Dextensions="resteasy-mutiny, jdbc-postgres, flyway, pg-client"
-
+mvn quarkus:add-extension -Dextensions="amqp" #activemq extension
+  
 
 
 # marketplace Project
