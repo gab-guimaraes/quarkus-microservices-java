@@ -8,23 +8,23 @@ services:
       POSTGRES_PASSWORD: cadastro
     ports:
       - "5432:5432"
-  keycloak_ifood:
-    container_name: keycloak_ifood
-    image: jboss/keycloak:9.0.2
-    environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-    ports:
-      - "8180:8080"
-  artemis_ifood:
-    image: vromero/activemq-artemis:2.11.0
-    container_name: activemq_ifood
-    environment:
-        ARTEMIS_USERNAME: user-amq
-        ARTEMIS_PASSWORD: password-amq
-    ports:
-        - "8161:8161"
-        - "61616:61616"
+#  keycloak_ifood:
+#    container_name: keycloak_ifood
+#    image: jboss/keycloak:9.0.2
+#    environment:
+#      KEYCLOAK_USER: admin
+#      KEYCLOAK_PASSWORD: admin
+#    ports:
+#      - "8180:8080"
+#  artemis_ifood:
+#    image: vromero/activemq-artemis:2.11.0
+#    container_name: activemq_ifood
+#    environment:
+#        ARTEMIS_USERNAME: user-amq
+#        ARTEMIS_PASSWORD: password-amq
+#    ports:
+#        - "8161:8161"
+#        - "61616:61616"
   mongodb_ifood:
     image: mongo
     container_name: mongo_ifood
