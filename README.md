@@ -7,3 +7,5 @@ Creating microservices with quarkus like uber eats and ifood
     b. Pedido - to create request for restaurantes with location and more, I used mongodB for it. (PanacheMongoEntity).
 3. All APIS have swagger configurated, you can make request accessing: http://localhost:8082/q/swagger-ui/ (please, check the port of each API)
 
+![example of request](screenshot_json.png)
+
