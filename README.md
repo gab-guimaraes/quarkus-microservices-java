@@ -21,11 +21,15 @@ Example of request (showing all requests of the database:
 
 ``` How to add extension on command line: mvn quarkus:add-extension -Dextensions="smallrye-openapi, resteasy-jsonb, mongodb-panache" ```
 
-Software and Plugin Suggestion: 
+# Software and Plugin Suggestion: 
 
 Compass MongoDB to test connection and view MongoDB database - https://www.mongodb.com/products/compass
+
 DBeaver to Postgres database - https://dbeaver.io/download/
+
 Quarkus plugin for InteliiJ to create faster projects - https://www.jetbrains.com/help/idea/quarkus.html
+
 Docker - https://www.docker.com/
+
 GraalVM (Cloud Native and faster than JVM) - https://www.graalvm.org/
 
